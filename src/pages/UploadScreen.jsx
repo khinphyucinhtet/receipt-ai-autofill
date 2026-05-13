@@ -250,8 +250,9 @@ function UploadScreen({ previewUrl, onFileSelect, onStartScan, errorMessage }) {
                 type="button"
                 className="camera-tool-button secondary-tool"
                 onClick={stopCameraStream}
+                aria-label="Close camera"
               >
-                Close Camera
+                ✕
               </button>
             </div>
           ) : null}

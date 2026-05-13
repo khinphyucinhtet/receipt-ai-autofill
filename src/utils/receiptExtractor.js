@@ -113,6 +113,30 @@ function validateReceiptShape(parsedData) {
   })
 }
 
+function normalizeCurrency(value) {
+  const rawCurrency = String(value || '').trim()
+
+  if (!rawCurrency) {
+    return ''
+  }
+
+  const upperCurrency = rawCurrency.toUpperCase()
+
+  if (['MYANMAR KYAT', 'KYAT', 'K', 'KS', 'MMK'].includes(upperCurrency)) {
+    return 'MMK'
+  }
+
+  if (['RINGGIT', 'RM', 'MYR'].includes(upperCurrency)) {
+    return 'MYR'
+  }
+
+  if (upperCurrency === '$' || upperCurrency === 'DOLLAR') {
+    return 'USD'
+  }
+
+  return upperCurrency
+}
+
 function normalizeReceiptData(parsedData) {
   validateReceiptShape(parsedData)
 
@@ -120,7 +144,7 @@ function normalizeReceiptData(parsedData) {
     merchantName: String(parsedData.merchantName || '').trim(),
     date: normalizeDate(parsedData.date || ''),
     totalAmount: String(parsedData.totalAmount || '').replace(/[^\d.,-]/g, '').trim(),
-    currency: String(parsedData.currency || '').trim().toUpperCase(),
+    currency: normalizeCurrency(parsedData.currency),
   }
 }
 

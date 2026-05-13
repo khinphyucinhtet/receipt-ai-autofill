@@ -404,12 +404,12 @@ button {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 22px;
 }
 
 .preview-frame {
   position: relative;
-  min-height: 440px;
+  min-height: 490px;
   flex: 1;
   overflow: hidden;
   border-radius: 28px;
@@ -509,12 +509,12 @@ button {
 }
 
 .scan-overlay .scan-corner {
-  width: 42px;
-  height: 42px;
+  width: 34px;
+  height: 34px;
   border-width: 4px;
-  border-radius: 10px;
+  border-radius: 0;
   background: transparent;
-  box-shadow: 0 0 18px rgba(66, 221, 255, 0.3);
+  box-shadow: 0 0 10px rgba(66, 221, 255, 0.28);
 }
 
 .action-bar {
@@ -527,7 +527,8 @@ button {
 .upload-actions {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
+  margin-top: 6px;
 }
 
 .upload-feedback {
@@ -565,7 +566,7 @@ button {
 
 .action-pill {
   flex: 1;
-  min-height: 84px;
+  min-height: 74px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -594,15 +595,15 @@ button {
 }
 
 .capture-button {
-  width: 92px;
-  min-width: 92px;
-  border-radius: 28px;
+  width: 82px;
+  min-width: 82px;
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 10px 14px;
+  gap: 6px;
+  padding: 10px 8px 12px;
 }
 
 .capture-button:disabled {
@@ -611,8 +612,8 @@ button {
 }
 
 .capture-button-core {
-  width: 62px;
-  height: 62px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   border: 5px solid #ffffff;
   box-shadow:
@@ -622,7 +623,7 @@ button {
 }
 
 .capture-button-text {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 600;
   line-height: 1;
 }
@@ -662,21 +663,27 @@ button {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  align-items: center;
 }
 
 .camera-tool-button {
-  flex: 1;
-  min-height: 48px;
-  border-radius: 14px;
+  min-height: 38px;
+  padding: 0 12px;
+  border-radius: 12px;
   border: 1px solid rgba(66, 221, 255, 0.24);
   background: rgba(5, 17, 40, 0.78);
   color: #f4fbff;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 0.82rem;
   backdrop-filter: blur(10px);
 }
 
 .camera-tool-button.secondary-tool {
   background: rgba(255, 255, 255, 0.08);
+  min-width: 38px;
+  flex: 0 0 38px;
+  padding: 0;
+  font-size: 1rem;
 }
 
 .primary-button,
@@ -1091,7 +1098,7 @@ button {
   }
 
   .preview-frame {
-    min-height: 400px;
+    min-height: 440px;
   }
 
   .action-bar {
@@ -1110,12 +1117,12 @@ button {
   }
 
   .action-pill {
-    min-height: 70px;
+    min-height: 64px;
     font-size: 0.88rem;
   }
 
   .preview-frame {
-    min-height: 320px;
+    min-height: 360px;
   }
 
   .camera-toolbar {
@@ -1125,18 +1132,18 @@ button {
   }
 
   .camera-tool-button {
-    min-height: 44px;
-    font-size: 0.86rem;
+    min-height: 36px;
+    font-size: 0.8rem;
   }
 
   .capture-button {
-    width: 82px;
-    min-width: 82px;
+    width: 76px;
+    min-width: 76px;
   }
 
   .capture-button-core {
-    width: 56px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
   }
 
   .success-mark {

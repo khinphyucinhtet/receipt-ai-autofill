@@ -1,6 +1,30 @@
 import Header from '../components/Header'
 
+const COMMON_CURRENCIES = [
+  'USD',
+  'MYR',
+  'MMK',
+  'SGD',
+  'THB',
+  'IDR',
+  'PHP',
+  'VND',
+  'JPY',
+  'KRW',
+  'CNY',
+  'INR',
+  'EUR',
+  'GBP',
+  'AUD',
+  'CAD',
+]
+
 function ReviewScreen({ receiptData, onChange, onBack, onSave, onPrint }) {
+  const normalizedCurrency = String(receiptData.currency || '').trim().toUpperCase()
+  const currencyOptions = normalizedCurrency && !COMMON_CURRENCIES.includes(normalizedCurrency)
+    ? [normalizedCurrency, ...COMMON_CURRENCIES]
+    : COMMON_CURRENCIES
+
   return (
     <section className="screen-root screen-light review-screen">
       <Header title="Review & Edit" leftIcon="←" onLeftClick={onBack} leftLabel="Go back" />
@@ -60,13 +84,14 @@ function ReviewScreen({ receiptData, onChange, onBack, onSave, onPrint }) {
               <select
                 id="currency"
                 className="form-select"
-                value={receiptData.currency}
+                value={normalizedCurrency}
                 onChange={(event) => onChange('currency', event.target.value)}
               >
-                <option value="USD">USD</option>
-                <option value="SGD">SGD</option>
-                <option value="EUR">EUR</option>
-                <option value="MYR">MYR</option>
+                {currencyOptions.map((currencyCode) => (
+                  <option key={currencyCode} value={currencyCode}>
+                    {currencyCode}
+                  </option>
+                ))}
               </select>
             </div>
           </form>
