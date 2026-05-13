@@ -92,19 +92,7 @@ The app follows a simple 6-screen flow:
 - On phones and deployed sites, `getUserMedia()` usually requires `HTTPS`.
 - If the browser blocks camera preview, the app shows a friendly message and the upload flow still works.
 
-## Gemini API Key
 
-Create a `.env` file in the project root and add:
-
-```bash
-VITE_GEMINI_API_KEY=your_key_here
-```
-
-The app reads the API key only from:
-
-```bash
-import.meta.env.VITE_GEMINI_API_KEY
-```
 
 ## Environment / Security Note
 
@@ -118,15 +106,6 @@ npm install
 npm run dev
 ```
 
-## Test On Phone
-
-Run the dev server with host exposure:
-
-```bash
-npm run dev -- --host
-```
-
-Then open the local network URL shown by Vite on your phone. For reliable live camera preview on mobile, HTTPS deployment is recommended.
 
 ## Build Check
 
@@ -136,21 +115,3 @@ The project has been verified with:
 npm run build
 ```
 
-## Deploy On Vercel
-
-1. Push the project to GitHub.
-2. Import the repository into Vercel.
-3. Add the environment variable:
-
-```bash
-VITE_GEMINI_API_KEY=your_key_here
-```
-
-4. Deploy the project.
-5. Copy the generated Vercel URL and replace the top line:
-
-```bash
-Live Demo: Add your Vercel link here later
-```
-
-Vercel serves the app over HTTPS, which is important for live mobile camera preview.
