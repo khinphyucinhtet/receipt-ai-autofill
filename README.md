@@ -1,72 +1,126 @@
 # AI Receipt Detector
 
-Live Demo: https://vercel.com/api/toolbar/link/receipt-ai-autofill-azure.vercel.app?via=project-overview-visit-button&p=1&i=visit-with-toolbar
+## Live Demo
 
-AI Receipt Detector is a React + Vite web app built for a receipt-to-form auto-fill assessment. It lets users capture a receipt with a live camera preview or upload an image, sends the receipt to Gemini for field extraction, and then allows the user to review, edit, save, and print the extracted data.
+https://receipt-ai-autofill-azure.vercel.app/
 
-## How It Works
+AI Receipt Detector is a React + Vite web application developed for a receipt-to-form auto-fill assessment. The app allows users to capture or upload receipt images, extract receipt information using Gemini AI, review and edit the extracted details, and save or print the final result.
 
-The app follows a simple 6-screen flow:
+---
 
-1. **Splash Screen**
-   - Shows the AI Receipt Detector intro screen for 2 seconds.
+## AI Model
 
-2. **Upload / Capture Receipt**
-   - Users can:
-     - open a live camera preview
-     - switch between front and back camera when supported
-     - capture a receipt from the live video feed
-     - upload a receipt from Gallery or Upload
-   - The `Scan Receipt` button becomes active only after an image is selected or captured.
+- Gemini 2.5 Flash
 
-3. **Analyzing Receipt**
-   - Shows the scanning/loading state while the app starts the Gemini extraction process.
-
-4. **Extracting Details**
-   - Shows the detected receipt fields before moving to review.
-
-5. **Review & Edit**
-   - Users can edit:
-     - Merchant Name
-     - Date
-     - Total Amount
-     - Currency
-
-6. **Success / Saved**
-   - Shows the saved summary.
-   - Users can print the result or return home.
-
-## Project Flow
-
-- User selects or captures a receipt image.
-- The image is converted to base64 in the browser.
-- The app sends the image to Gemini using `VITE_GEMINI_API_KEY`.
-- Gemini returns structured JSON for:
-  - `merchantName`
-  - `date`
-  - `totalAmount`
-  - `currency`
-- The extracted fields are shown in an editable review form.
-- The final edited data is saved in `localStorage`.
-- The user can print or save the final summary as PDF using the browser print flow.
+---
 
 ## Features
 
-- 6-screen assessment flow from splash to saved confirmation
-- Live camera preview using `navigator.mediaDevices.getUserMedia()`
-- Camera capture using the live video frame
-- Switch camera support for front/back camera where available
-- Close camera support to stop the stream cleanly
-- Gallery and file upload fallback for unsupported or blocked camera access
-- Gemini receipt extraction for:
-  - `merchantName`
-  - `date`
-  - `totalAmount`
-  - `currency`
-- Editable review form before final save
-- `localStorage` save support
+- AI-powered receipt field extraction
+- Live camera preview using `getUserMedia()`
+- Camera capture from live video feed
+- Front and back camera switching support
+- Gallery and file upload support
+- Editable review form before saving
+- Local storage save support
 - Print / PDF-ready confirmation flow
-- Responsive design for laptop and mobile screens
+- Responsive design for laptop and mobile devices
+- 6-screen guided user flow
+
+---
+
+## Supported Extracted Fields
+
+The app extracts the following receipt details:
+
+- Merchant Name
+- Date
+- Total Amount
+- Currency
+
+Supported currencies include:
+
+- USD
+- MYR
+- MMK
+- SGD
+- THB
+- IDR
+- PHP
+- VND
+- JPY
+- KRW
+- CNY
+- INR
+- EUR
+- GBP
+- AUD
+- CAD
+
+---
+
+## Application Flow
+
+### 1. Splash Screen
+Displays the AI Receipt Detector intro screen.
+
+### 2. Upload / Capture Receipt
+Users can:
+- Open a live camera preview
+- Switch between front and back camera
+- Capture a receipt from the live camera feed
+- Upload receipt images from Gallery or Upload
+
+The `Scan Receipt` button becomes active only after an image is selected or captured.
+
+### 3. Analyzing Receipt
+Shows the AI scanning/loading state.
+
+### 4. Extracting Details
+Displays the extracted receipt information before review.
+
+### 5. Review & Edit
+Users can review and edit:
+- Merchant Name
+- Date
+- Total Amount
+- Currency
+
+### 6. Success / Saved
+Displays the saved receipt summary with print support.
+
+---
+
+## Project Workflow
+
+1. The user uploads or captures a receipt image.
+2. The image is converted into base64 format in the browser.
+3. The receipt image is sent to Gemini for structured field extraction.
+4. Gemini returns structured JSON data.
+5. Extracted values are shown inside an editable review form.
+6. Final edited data is saved in `localStorage`.
+7. Users can print or save the final result as PDF using the browser print flow.
+
+---
+
+## Camera Features
+
+- Tap the bottom middle `Camera` button to open a live camera preview.
+- When the preview is active, the same button becomes `Capture`.
+- Tap `Capture` to take a snapshot from the live video feed.
+- Tap `🔄` to switch between front and back cameras where supported.
+- Tap `✕` to close the live camera preview.
+- If camera access is blocked or unsupported, users can continue using Gallery or Upload.
+
+---
+
+## Camera Permission Note
+
+- Live camera preview works on `localhost` during development.
+- On mobile devices and deployed websites, camera access usually requires `HTTPS`.
+- If camera permission is denied, the upload flow remains available.
+
+---
 
 ## Tech Stack
 
@@ -77,41 +131,11 @@ The app follows a simple 6-screen flow:
 - Gemini API
 - localStorage
 
-## Camera
-
-- Tap the bottom middle `Camera` button to request permission and open a live preview.
-- When the live preview is open, the same bottom middle button becomes `Capture`.
-- Tap `Capture` to take a snapshot from the live camera feed.
-- Tap `🔄 Switch` to toggle between back and front camera when supported.
-- Tap `Close Camera` to stop the camera stream without capturing.
-- If camera access is blocked or unsupported, users can still continue with Gallery or Upload.
-
-## Camera Permission Note
-
-- Live camera preview works on `localhost` during development.
-- On phones and deployed sites, `getUserMedia()` usually requires `HTTPS`.
-- If the browser blocks camera preview, the app shows a friendly message and the upload flow still works.
-
-
+---
 
 ## Environment / Security Note
 
-- For this assessment/demo version, Gemini is called directly from the frontend.
-- For a production app, the Gemini API request should be moved to a backend or serverless function so the API key is not exposed in the client bundle.
+This assessment version calls Gemini directly from the frontend using:
 
-## Run Locally
-
-```bash
-npm install
-npm run dev
-```
-
-
-## Build Check
-
-The project has been verified with:
-
-```bash
-npm run build
-```
-
+```env
+VITE_GEMINI_API_KEY
