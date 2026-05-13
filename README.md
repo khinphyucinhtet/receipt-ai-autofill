@@ -139,3 +139,36 @@ This assessment version calls Gemini directly from the frontend using:
 
 ```env
 VITE_GEMINI_API_KEY
+```
+
+For a production application, the Gemini API request should be moved to a backend or serverless function to avoid exposing the API key in the client bundle.
+
+---
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+## Production Build
+
+```bash
+npm run build
+```
+
+The project has been tested successfully using the Vite production build process.
+
+---
+
+## Future Improvements
+
+- Backend/serverless Gemini integration
+- Receipt history database
+- Multi-language receipt support
+- Improved PDF export formatting
+```env
+VITE_GEMINI_API_KEY
