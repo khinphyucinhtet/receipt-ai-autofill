@@ -243,12 +243,17 @@ function UploadScreen({ previewUrl, onFileSelect, onStartScan, errorMessage }) {
 
           {isCameraLive ? (
             <div className="camera-toolbar">
-              <button type="button" className="camera-tool-button" onClick={handleSwitchCamera}>
-                🔄 Switch
+              <button
+                type="button"
+                className="camera-tool-button icon-tool-button"
+                onClick={handleSwitchCamera}
+                aria-label="Switch camera"
+              >
+                🔄
               </button>
               <button
                 type="button"
-                className="camera-tool-button secondary-tool"
+                className="camera-tool-button secondary-tool icon-tool-button"
                 onClick={stopCameraStream}
                 aria-label="Close camera"
               >
