@@ -1,6 +1,6 @@
 # AI Receipt Detector
 
-Live Demo: `Add your Vercel link here later`
+Live Demo: https://vercel.com/api/toolbar/link/receipt-ai-autofill-azure.vercel.app?via=project-overview-visit-button&p=1&i=visit-with-toolbar
 
 AI Receipt Detector is a React + Vite web app built for a receipt-to-form auto-fill assessment. It lets users capture a receipt with a live camera preview or upload an image, sends the receipt to Gemini for field extraction, and then allows the user to review, edit, save, and print the extracted data.
 
