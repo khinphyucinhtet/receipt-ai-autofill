@@ -91,6 +91,31 @@ Displays the saved receipt summary with print support.
 
 ---
 
+## User Flow
+
+1. Splash Screen opens when the application starts.
+2. User proceeds to the Upload / Capture screen.
+3. When the `Camera` button is pressed:
+   - The browser requests camera permission.
+   - If permission is allowed:
+     - Live camera preview opens.
+     - User can capture the receipt.
+   - If permission is denied:
+     - The app shows a friendly message.
+     - User can continue using Gallery or Upload instead.
+4. After a receipt image is selected or captured:
+   - User presses `Scan Receipt`.
+5. Gemini AI analyzes the receipt image and extracts:
+   - Merchant Name
+   - Date
+   - Total Amount
+   - Currency
+6. Extracted data is shown in the Review & Edit screen.
+7. User can modify the extracted information if needed.
+8. Final data is saved locally and can be printed or exported as PDF.
+
+---
+
 ## Project Workflow
 
 1. The user uploads or captures a receipt image.
@@ -170,5 +195,3 @@ The project has been tested successfully using the Vite production build process
 - Receipt history database
 - Multi-language receipt support
 - Improved PDF export formatting
-```env
-VITE_GEMINI_API_KEY
